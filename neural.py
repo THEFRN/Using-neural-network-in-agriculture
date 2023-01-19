@@ -6,9 +6,7 @@ import matplotlib.pyplot as plt
 # /////////////////////////////
 import torch
 import torch.nn as nn
-# /////////////////////////////
-import sys
-sys.path.append('usr/local/lib/python3.10.2/site-packages')
+# Adding images
 
 # Loading the image data
 image = cv.imread('1.jpg', cv.IMREAD_GRAYSCALE)
