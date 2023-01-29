@@ -8,18 +8,22 @@ import torch
 import torch.nn as nn
 
 import os
+
+import PIL
+from PIL import Image
 # Adding images
-path = 'E:\\Neural Network Project\\First_project\\images'
+path = r'E:\\Neural Network Project\\First_project\\images'
 image_format = '.jpg'
 image_file_list = [os.path.join(path, f) for f in os.listdir(path) if f.endswith(image_format)]
 # Loading the image data
 images = []
-for img in image_file_list:
-    print(img)
-    image = cv.imread(img)
-    images.append(image)
-    cv.imshow('Image', image)
-    cv.waitKey(0)
+for file in image_file_list:
+    f_img = file
+    img = Image.open(f_img)
+    img = img.resize((15, 15))
+    img.show()
+    images.append(img)
+    print(images)
 
 
 # Data Preparation
@@ -31,7 +35,7 @@ for image in images:
 
 # Defining Neural Network Model
 
-model = nn.Sequential(nn.Linear(16, n_hidden),
+model = nn.Sequential(nn.Linear(225, n_hidden),
                       nn.ReLU(),
                       nn.Linear(n_hidden, n_out),
                       nn.Sigmoid())
